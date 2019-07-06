@@ -2,13 +2,17 @@ package main
 
 import (
 	"fmt"
+	"jude/cloud-native-go/api"
 	"net/http"
 	"os"
+	// "github.com/dumebi/cloud-native-go/api"
 )
 
 func main() {
 	http.HandleFunc("/", index)
 	http.HandleFunc("/api/echo", echo)
+	http.HandleFunc("/api/books", api.BooksHandleFunc)
+	http.HandleFunc("/api/books/", api.BooksHandleFunc)
 	http.ListenAndServe(port(), nil)
 }
 
